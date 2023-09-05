@@ -18,6 +18,9 @@
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+  generateBtn.addEventListener('click', function() {
+    prompt('Your password must contain at least 8 characters, but not more than 128 characters. These characters can be lower or upper case, numeric, and/or special characters.')
+  }); 
 
 // Write password to the #password input
 function writePassword() {
