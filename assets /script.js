@@ -17,9 +17,6 @@
 
   //7. Random password is displayed in an alert or written on the page. 
 
-  // one variable for numbers, upper/lower case, special characters
-
-  // empty array or string
 
 // Get references to the #generate element
 
@@ -33,61 +30,64 @@ var generateBtn = document.querySelector("#generate");
 
 
   function generatePassword() {
-    var passwordLength = prompt('How long would you like your password to be? Enter a number between 8 and 128.')
-
+    
     let result = '';
 
     let passwordChar = '';
 
-    var computerPick = Math.random('upperCase'+ 'lowerCase' + 'num' + 'specialChar')
+    let password = '';
+
+    var passwordLength = parseInt(prompt('How long would you like your password to be? Enter a number between 8 and 128.'))
 
     if(passwordLength >= 8 && passwordLength <= 128) {
       result = 'awesome'
-    } else if(passwordLength < 8 || passwordLength > 128) {
-        result = alert("Password must be more than 8 characters and less than 128 characters.")
+    } else if(passwordLength < 8 || passwordLength > 128 || Number.isNaN(passwordLength)) {
+        result = alert("Password must be more than 8 characters and less than 128 characters, and it must be a number value.")
         return 'Click Generate Password again and pick a new password length.';
     }
 
-    var upperCaseChar = confirm('Would you like uppercase letters in your password?')
+    var includeupperCaseChar = confirm('Would you like uppercase letters in your password?')
     console.log(upperCaseChar)
 
-      if (upperCaseChar === false) {
-        console.log('No problem')
-      } else if(upperCaseChar === true) {
-        result = passwordChar += upperCaseChar;
+      
+    if(includeupperCaseChar === true) {
+         passwordChar += upperCaseChar;
       }
 
 
-    var lowerCaseChar = confirm('Would you like lowercase letters in your password?')
+    var includelowerCaseChar = confirm('Would you like lowercase letters in your password?')
     console.log(lowerCaseChar)
 
-    if (lowerCaseChar === true) {
-      result = passwordChar += lowerCaseChar;
-    } else if(lowerCaseChar === false)
-      result = 'No problem!'
+    if (includelowerCaseChar === true) {
+      passwordChar += lowerCaseChar;
+    } 
 
-    var num = confirm('Would you like numbers in your password?') 
+    var includenum = confirm('Would you like numbers in your password?') 
+        console.log(num)
+    if (includenum === true) {
+       passwordChar += num;
+    } 
 
-    if (num === true) {
-      result = passwordChar += num;
-    } else if(num = false) {
-      result = 'No problem!'
-    }
-
-    var specialChar = confirm('Would you like special characters in your password?')
+    var includespecialChar = confirm('Would you like special characters in your password?')
     console.log(specialChar)
 
-    if (specialChar = true) {
-      result = passwordChar += specialChar;
-    } else if(specialChar = false) {
-      result = 'No problem!'
-    }
+    if (includespecialChar === true) {
+       passwordChar += specialChar;
+    } 
 
-    return computerPick;
+      if(!includeupperCaseChar && 
+        !includelowerCaseChar && 
+        !includenum && 
+        !includespecialChar) {
+        alert('Must confirm at least 1 choice.')
+        return "Click Generate Password again."
+      }
 
-    // for(let i = 0; passwordLength > i; i++) {
-    //   console.log(`Pick a character ${userChoice[i]}`)
-    // }
+    for(let i = 0; i < passwordLength; i++) {
+      let computerPick = Math.floor(Math.random() * passwordChar.length)
+      password += passwordChar.charAt(computerPick)
+    } 
+    return password
   }
 
 
