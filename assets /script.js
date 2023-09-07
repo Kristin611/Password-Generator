@@ -31,42 +31,65 @@ var generateBtn = document.querySelector("#generate");
   var num = '0123456789';
   var specialChar = '!@#$%^&*()_+';
 
-  var userChoice = Math.random('upperCase'+ 'lowerCase' + 'num' + 'specialChar')
 
   function generatePassword() {
     var passwordLength = prompt('How long would you like your password to be? Enter a number between 8 and 128.')
-    console.log(passwordLength)
+
+    let result = '';
+
+    let passwordChar = '';
+
+    var computerPick = Math.random('upperCase'+ 'lowerCase' + 'num' + 'specialChar')
 
     if(passwordLength >= 8 && passwordLength <= 128) {
-      console.log('true') 
+      result = 'awesome'
     } else if(passwordLength < 8 || passwordLength > 128) {
-      console.log('false')
-        alert("Password must be more than 8 characters and less than 128 characters.")
-    } 
+        result = alert("Password must be more than 8 characters and less than 128 characters.")
+        return 'Click Generate Password again and pick a new password length.';
+    }
 
     var upperCaseChar = confirm('Would you like uppercase letters in your password?')
     console.log(upperCaseChar)
 
+      if (upperCaseChar === false) {
+        console.log('No problem')
+      } else if(upperCaseChar === true) {
+        result = passwordChar += upperCaseChar;
+      }
+
+
     var lowerCaseChar = confirm('Would you like lowercase letters in your password?')
     console.log(lowerCaseChar)
+
+    if (lowerCaseChar === true) {
+      result = passwordChar += lowerCaseChar;
+    } else if(lowerCaseChar === false)
+      result = 'No problem!'
+
+    var num = confirm('Would you like numbers in your password?') 
+
+    if (num === true) {
+      result = passwordChar += num;
+    } else if(num = false) {
+      result = 'No problem!'
+    }
 
     var specialChar = confirm('Would you like special characters in your password?')
     console.log(specialChar)
 
-    return " ";
+    if (specialChar = true) {
+      result = passwordChar += specialChar;
+    } else if(specialChar = false) {
+      result = 'No problem!'
+    }
+
+    return computerPick;
 
     // for(let i = 0; passwordLength > i; i++) {
     //   console.log(`Pick a character ${userChoice[i]}`)
     // }
   }
 
-  
-
-  // const userInput = alert('Pick the length of your passowrd. Remember it must be at least 8 characters!');
-
-  
-
- 
 
 // Write password to the #password input
 function writePassword() {
