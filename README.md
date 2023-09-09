@@ -7,3 +7,4 @@ I also built checks into the code to make sure the user chooses a valid password
 
 <img width="1138" alt="Screenshot 2023-09-09 at 4 01 09 PM" src="https://github.com/Kristin611/Password-Generator/assets/131815565/e8c09cf6-f3c2-4c82-bd62-3afc3d71d93b">
 
+https://kristin611.github.io/Password-Generator/
