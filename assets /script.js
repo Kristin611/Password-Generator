@@ -19,30 +19,30 @@
 
 
 // Get references to the #generate element
-
 var generateBtn = document.querySelector("#generate");
 
-
+//Below I defined my variables in order to create an algorithm to randomly select numbers and characters to generate the password.
   var upperCaseChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var lowerCaseChar = 'abcdefghijklmnopqrstuvwxyz';
   var num = '0123456789';
   var specialChar = '!@#$%^&*()_+';
 
 
-  function generatePassword() {
+  function generatePassword() { 
     
-    let result = '';
+    let result = ''; //defined result in order to generate messages for the user in case they did not follow the criteria, like password length.
 
-    let passwordChar = '';
+    let passwordChar = ''; //created the variable passwordChar to handle user choices
 
-    let password = '';
+    let password = ''; //created the variable password to return the final password 
 
     var passwordLength = parseInt(prompt('How long would you like your password to be? Enter a number between 8 and 128.'))
 
+    //All of the conditional statements below are designed to handle the user's preferences for their randomly generated password, like password length, whether or not they want upper or lower case characters, numbers, and/or special characters.
     if(passwordLength >= 8 && passwordLength <= 128) {
       result = 'awesome'
     } else if(passwordLength < 8 || passwordLength > 128 || Number.isNaN(passwordLength)) {
-        result = alert("Password must be more than 8 characters and less than 128 characters, and it must be a number value.")
+        result = alert("Password must be more than 8 characters and less than 128 characters. Your password must also be a number value.")
         return 'Click Generate Password again and pick a new password length.';
     }
 
@@ -83,6 +83,7 @@ var generateBtn = document.querySelector("#generate");
         return "Click Generate Password again."
       }
 
+      //The purpose of the for loop below is to loop through the user choices, and Math.random is used to generate a random password based off of user preferences.
     for(let i = 0; i < passwordLength; i++) {
       let computerPick = Math.floor(Math.random() * passwordChar.length)
       password += passwordChar.charAt(computerPick)
